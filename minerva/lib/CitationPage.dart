@@ -3,6 +3,10 @@ import 'dart:core';
 import 'dart:ui';
 import 'SearchBar.dart';
 
+// TODO: make styling standard instead of having magic numbers throughout code
+// TODO: can return types be made more specific than Widget for greater type
+// safety?
+
 class CitationsPage extends StatefulWidget {
   final String title;
 
@@ -62,18 +66,60 @@ Widget getCitationElement(String name, List<String> listElements) {
   );
 }
 
+class HoverBoldedListElement extends StatefulWidget {
+  final String text;
+
+  const HoverBoldedListElement({super.key, required this.text});
+
+  @override
+  State<HoverBoldedListElement> createState()
+    => HoverBoldedListElementState(text);
+}
+
+class HoverBoldedListElementState extends State<HoverBoldedListElement> {
+  final String text;
+  bool isBold = false;
+
+  HoverBoldedListElementState(this.text);
+
+  void makeBold(PointerEvent details) {
+    setState(() {
+      isBold = true;
+    });
+  }
+  
+  void makeUnbold(PointerEvent details) {
+    setState(() {
+      isBold = false;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion (
+      onEnter: makeBold,
+      onExit: makeUnbold,
+      child: Container (
+        child: Text(
+          '${text}',
+          style: TextStyle(
+            color: Colors.black,
+            decoration: TextDecoration.none,
+            fontSize: 20,
+            height: 1.1,
+            fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+        padding: const EdgeInsets.all(8.0),
+      )
+    );
+  }
+}
+
 Widget getListElement(String name) {
   return Container (
-    child: Text(
-      '${name}',
-      style: const TextStyle(
-        color: Colors.black,
-        decoration: TextDecoration.none,
-        fontSize: 20,
-        height: 1.1,
-      ),
+    child: HoverBoldedListElement(
+        text: name,
     ),
-    padding: const EdgeInsets.all(8.0),
   );
 }
 
@@ -90,6 +136,7 @@ Widget getListView(List<String> listElements) {
       },
       separatorBuilder: (BuildContext context, int index) => Divider(
         color: Colors.grey[50],
+      //  height: 1,
       ),
   );
 }
