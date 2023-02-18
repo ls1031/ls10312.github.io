@@ -1,5 +1,5 @@
-import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'SearchBar.dart';
 
 //TODO - add the below line to pubspec.yaml dependencies
 // easy_search_bar: ^2.4.2
@@ -38,14 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: EasySearchBar(
-        title: const Text("Minerva", style: TextStyle(fontFamily: "Josefin_Sans", color: Colors.white)),
-        onSearch: (value) => setState(() => searchValue = value),
-        suggestions: _suggestions,
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Colors.black,
-
-      ),
+      appBar: getSearchBar(searchValue, _suggestions,
+        (value) => setState(() => searchValue = value)),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.

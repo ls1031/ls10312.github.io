@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
 import 'dart:ui';
+import 'SearchBar.dart';
 
 class CitationsPage extends StatefulWidget {
   final String title;
@@ -26,12 +27,15 @@ class CitationsPageState extends State<CitationsPage> {
   
   @override
   Widget build(BuildContext context) {
-    return Column
-    (
-      children: [
-        Expanded ( child: getCitationElement("Cites", citedCases)),
-        Expanded ( child: getCitationElement("Cited by", citedCases)),
-      ]
+    return Scaffold(
+    // TODO: make this actually do something
+    appBar: getSearchBar('', ["foo", "bar", "baz"], (value) => (() => value)),
+      body: Column(
+        children: [
+          Expanded ( child: getCitationElement("Cites", citedCases)),
+          Expanded ( child: getCitationElement("Cited by", citedCases)),
+        ]
+      )
     );
   }
 }
