@@ -27,3 +27,13 @@ Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter
     throw http.ClientException;
   }
 }
+
+Future<List<String>> fetchSuggestions(String searchValue, int queryNumber) async {
+  final searchRes = await querySearch(searchValue, "search");
+  List<String> _suggestions = [];
+  for(int i = 0; i < queryNumber; i++) {
+    _suggestions.add(searchRes["results"][i]["name"]);
+  }
+  print("finished");
+  return _suggestions;
+}
