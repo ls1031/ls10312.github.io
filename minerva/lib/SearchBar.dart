@@ -6,6 +6,14 @@ import 'dart:async';
 // dependency to pubspec.yaml
 import 'queryFunc.dart';
 
+Future<List<String>> getSuggestedNames(String searchTerm) {
+  Future<List<String>> resultList;
+  querySearch(searchTerm, "search")['results'].forEach((result) {
+    resultList.get().add(result["name_abbreviation"]);
+  });
+  return resultList;
+}
+
 PreferredSizeWidget getSearchBar(String searchValue,
   Function(String) onSearch, Future<List<String>> Function(String) asyncSuggestions) {
   return EasySearchBar(
