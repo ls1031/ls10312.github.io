@@ -20,7 +20,6 @@ Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter
     var searchRes =
     convert.jsonDecode(response.body) as Map<String, dynamic>;
     // Prints API Call results to console
-    print("${searchRes}");
     return searchRes;
   } else {
     print('Request failed with status: ${response.statusCode}.');
@@ -28,12 +27,12 @@ Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter
   }
 }
 
-Future<List<String>> fetchSuggestions(String searchValue, int queryNumber) async {
-  final searchRes = await querySearch(searchValue, "search");
+Future<List<String>> fetchSuggestions(String searchValue, String endParameter) async {
+  final searchRes = await querySearch(searchValue, endParameter);
   List<String> _suggestions = [];
-  for(int i = 0; i < queryNumber; i++) {
+  for(int i = 0; i < searchRes["results"].length; i++) {
     _suggestions.add(searchRes["results"][i]["name"]);
   }
-  print("finished");
   return _suggestions;
 }
+
