@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_search_bar/easy_search_bar.dart';
 import 'SearchBar.dart';
+import 'QueryFunc.dart';
 import 'dart:io';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -35,23 +36,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
     //Variables here will fetch data from the api calls to render the text
-   String searchValue = '';
-   String Case_Name ='jbdiidoaovc fiocmoimimiomioiiocociofpmlms';
-   String date = '1/1/2001';
-   String CitedNum = '5000';
+   var searchValue;
+
+   var Case_Name = 'idna';
    
+   var date;
+   var CitedNum;
    //String path ='"C:\Users\luiss\Downloads\CV.pdf"';
   //This needs to be configured with past search result data to provide meaningful search suggestions
   final List<String> _suggestions = ["Case 1", "Case 2", "Case 3"];
 
+   @override
+  
+ 
+ 
   @override
   Widget build(BuildContext context) {
   
     return Scaffold(
-     appBar: getSearchBar(searchValue, _suggestions,
-        (value) => setState(() => searchValue = value)),
-
-      body: Column(  
+     //appBar: getSearchBar(searchValue, _suggestions,
+        //(value) => setState(() => searchValue = value)),
+      
+       body: SelectionArea( 
+       child: Column(  
         children: [
             //Row that has title and the amount cited of
             Row(
@@ -117,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         
       ),
+       ),
     );  
   }
 }
