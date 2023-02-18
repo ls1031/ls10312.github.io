@@ -4,9 +4,9 @@ import 'dart:async';
 // dependency to pubspec.yaml
 import 'package:http/http.dart' as http;
 
-Future<Map<String, dynamic>> querySearch(String searchValue) async {
+Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter) async {
   var url =
-  Uri.https('api.case.law', '/v1/cases/', {'search': searchValue});
+  Uri.https('api.case.law', '/v1/cases/', {endParameter: searchValue});
 
   // Await the http get response, then decode the json-formatted response.
   final response = await http.get(
