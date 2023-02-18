@@ -11,7 +11,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -19,30 +18,25 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
-    
-        scaffoldBackgroundColor: const Color(0xFFEFEFEF),
-      
+        scaffoldBackgroundColor: const Color(0xFFEFEFEF),    
       ),
-      home: const MyHomePage(title: 'Nav Bar'),
-       
+      home: const MyHomePage(title: 'Nav Bar'),      
     );
   }
 }
 
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String searchValue = '';
-   String Case_Name =' lms';
+    //Variables here will fetch data from the api calls to render the text
+   String searchValue = '';
+   String Case_Name ='jbdiidoaovc fiocmoimimiomioiiocociofpmlms';
    String date = '1/1/2001';
    String CitedNum = '5000';
    
@@ -57,85 +51,69 @@ class _MyHomePageState extends State<MyHomePage> {
      appBar: getSearchBar(searchValue, _suggestions,
         (value) => setState(() => searchValue = value)),
 
-  
-      body: Column(
+      body: Column(  
         children: [
-           // added Expanded widget
+            //Row that has title and the amount cited of
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:<Widget> [
-                
-                   Container(
-                  
-                  
-              child: Text(
-                style: TextStyle(
-                  fontSize: 26.0,          
-                  ), 
-                  textAlign: TextAlign.center,
-                'Title Name $Case_Name'
-            
-              ),                 
+              children: [        
+                Container(
+                  margin: EdgeInsets.all(30.0),
+                  child:Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                  children: [                
+                     Container(
+                      child:Align(
+                        alignment: Alignment.center,
+                          child: Text(
+                            style: TextStyle(
+                              fontSize: 26.0,       
+                              fontWeight: FontWeight.bold,   
+                            ), 
+                            textAlign: TextAlign.center,
+                            'Title Name $Case_Name'      
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                
                   Container(
-                   
-                     child: Text(
-                      textAlign: TextAlign.right,
+                   margin: EdgeInsets.all(30.0), 
+                    child: Text(
+                      textAlign: TextAlign.right,  
                       'Cited By $CitedNum'
-                  ),
-                  )
-                
+                    ),
+                  ),  
               ],
-            ),
-           
-          Container(
-            child:Text(
-              'here is $date'
-            ),
-          ),
-          
-          Container(
-            margin: EdgeInsets.all(30.0),  
-              child: const Text(
+            ),      
+            //Date Component
+            Container(
+              child:Text(
+                style: TextStyle (fontStyle: FontStyle.italic, fontSize:22.0),
+                'here is $date'
+                ),
+              ),
+              //Main text container down here 
+              Container(
+              color: Colors.blue,
+              margin: EdgeInsets.all(30.0),  
+              padding: EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: const Text(  
                   style: TextStyle(
-                    fontSize: 16.0,
-    
+                    fontFamily: 'serif',
+                    fontSize: 16.0,   
                   ),
-            
-              textAlign: TextAlign.center,
-              r"""Defendant Tobin was convicted by a jury of the crime of burglary. The court entered j      The sentence was excessive.\nTrd8767 he facts giving rise to this case are as follows: On the night of February 9, 1969, at about
-                 11:00 P.M. the defendant, in the company of Sherri Tobin, Daniel Stout, Michael Hume and Eddie Dunn was in an automobile
-                  driven by defendant in the vicinity of the Oliver C. Joseph Automobile Agency in Belleville. Their behavior while 
-                  driving was observed by James Muir who resided nearby. He stated the car stopped by the agency and the driver, 
-                  identified as Tobin, jumped out and ran across the street and kicked the agency door. The car in the meantime 
-                  circled the block and picked Tobin up. The car drove away and Muir next observed four men walking up the street 
-                  to the agency. Muir recognized one of the four as the man who kicked the door. The four men then entered the agency
-                   building by the same door previously kicked. Muir then called the police.\nThe police arrived and Officers Rettle 
-                   and Wobbe observed four men walking through the building. Two other policemen arrived. Rettle observed two of the 
-                   suspects at the back door. He identified himself and ordered them out. They disappeared back inside the building. 
-                   The police entered the building and found one suspect lying under a car, After turning on the lights they searched 
-                   the building. The other suspects were found in the basement. The defendant was hiding behind an air compressor when 
-                   discovered.\nAfter apprehending all four men the police with Mr. Muirs help located the car a few blocks away. Sherri\
-                    Tobin was found in the car asleep. She was carrying a .38 caliber snub-nosed revolver, fully loaded, with the serial 
-                    numbers filed off in the waist band of her slacks. One of the defendants, Hume, testified for the State and said defe
-                    ndant stated earlier in the evening that they would go to Belleville and “make some money”. He also stated that 
-                    defendant brought a gun into the building.\nThe evidence also showed that the door jamb of the door kicked by 
-                    defendant was splintered and the door opened by force.\nAdditionally, Mr. Oliver P. Joseph testified that the
-                     building was owned by and in the possession of Oliver C. Joseph, Inc., a corporation, engaged in the selling of 
-                     automobiles.\nAs to the authority to be in the premises, * * * the law presumes that the presence in a public 
-                     building for a purpose inconsistent with the purposes for which the building is open to the public is without
-                      authority. (People v. Urban (1971), (Ill.App.2d), 266 N.E.2d 112, 114. Also see People v. Weaver (1968), 41 Ill.2d
-                       434, 243 N.E.2d 245 cert. den. 3"""
-          
-
+                  softWrap: true,
+                  textAlign: TextAlign.justify,
+                  r"""Opinion of the Court by\nJustice Browne.\nThis was an action of replevin, brought against the plaintiff in error for the unlawful taking of a horse. The, defendant pleaded, besides property in himself and property in a third person, non cepit, and the statute of limitations. On the trial before the circuit court of Madison county, the defendant in error, the plaintiff helow, proved the horse was claimed to belong to plaintiff’s wife. That it was also claimed by Philip Creamer, who sold the horse to one Lock, who sold it to one Elihu Mather, who sold it to the defendant. This was all the evidence of taking by the defendant.\nStarr and Cowles, for plaintiff in error.\nBlackwell, for defendant in error.\nTo maintain the action of replevin, there must be an unlawful taking from the actual, or constructive possession of the plaintiff, which has not been proved. The judgment must therefore be reversed, ,\nJudgment reversed.\nReplevin lies for any unlawful taking of a chattel, and possession by the plaintiff and an actual wrongful taking by the defendant, are necessary to support the action. Pangburn v. Patridge, 7 Johns. Rep , 140.\n_ The action of replevin is grounded on a tortious taking, and sounds in damages like an action of trespass. Hopkins v. Hopkins, 10 Johns. Rep., 369.\nAt common law, a writ of replevin never lies, unless there has been a tortious taking, either originally or by construction of law, by some act which makes the party a trespasser ab initio. Meany v. Head, 1 Mason, 319.\nThe plea of non cepit puts in issue the fact of an actual taking; and unless there has been a wrongful taking from the possession of another, it is not a taking within the issue; and a wrongful detainer after a lawful taking, is not equivalent to an original wrongful talcing. Ibid.\nA mere possessory right is not sufficient to support this action; there must be an absolute, or at least a special property in the thing claimed. 5 Dane’s Dig., 516.\nThe present statute in relation to replevin is as follows : “ Whenever any goods or chattels shall have been wrongfully distrained, or otherwise wrongfully taken, or shall be wrongfully detained, an action of replevin may be brought for the recovery of such goods or chattels, by the owner or person entitled to their possession.” Purple’s Statutes, p. 868, Sec. 1. Scates’Comp., p. 226."""
+                ),
+              ),
             ),
-          
-          ),
-        ],
+          ],
         
-      ),
-    );
-    
+        ),
+      );  
   }
 }
