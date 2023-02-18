@@ -7,7 +7,8 @@ import 'dart:async';
 import 'queryFunc.dart';
 
 PreferredSizeWidget getSearchBar(String searchValue,
-  Function(String) onSearch, Future<List<String>> Function(String) asyncSuggestions) {
+  Function(String) onSearch, Future<List<String>> Function(String) asyncSuggestions,
+    Function(String) onSuggestionTap) {
   return EasySearchBar(
     title: const Text(
       "Minerva",
@@ -17,5 +18,6 @@ PreferredSizeWidget getSearchBar(String searchValue,
     iconTheme: IconThemeData(color: Colors.white),
     backgroundColor: Colors.black,
     asyncSuggestions: asyncSuggestions,
+    onSuggestionTap: onSuggestionTap,
   );
 }

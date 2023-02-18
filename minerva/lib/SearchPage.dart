@@ -1,10 +1,11 @@
+import 'package:easy_search_bar/easy_search_bar.dart';
+import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
+import 'package:search_page/search_page.dart';
+import 'dart:async';
+import 'dart:io';
 import 'SearchBar.dart';
-
-//TODO - add the below line to pubspec.yaml dependencies
-// easy_search_bar: ^2.4.2
-
-
+import 'queryFunc.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -26,8 +27,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String searchValue = '';
-  //This needs to be configured with past search result data to provide meaningful search suggestions
-  final List<String> _suggestions = ["Case 1", "Case 2", "Case 3"];
+  var searchRes;
 
   @override
   Widget build(BuildContext context) {
@@ -37,39 +37,37 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
     return Scaffold(
-      appBar: getSearchBar(searchValue, _suggestions,
-        (value) => setState(() => searchValue = value)),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              'abc',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      appBar: getSearchBar(searchValue, (value) => setState(() => searchValue = value), (value) async {
+        searchRes = await fetchSuggestions(value, "search");
+        return searchRes;
+
+      }, () {}),
+        drawer: Drawer(
+            child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
+                    child: Text('Drawer Header'),
+                  ),
+                  ListTile(
+                      title: const Text('Item 1'),
+                      onTap: () => Navigator.pop(context)
+                  ),
+                  ListTile(
+                      title: const Text('Item 2'),
+                      onTap: () => Navigator.pop(context)
+                  )
+                ]
+            )
         ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+        body: Center(
+            child: Text('Welcome to Minverva, the case relationship explorer!')
+        )
     );
   }
 }
