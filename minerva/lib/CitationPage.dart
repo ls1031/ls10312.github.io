@@ -7,6 +7,10 @@ import 'SearchBar.dart';
 // TODO: can return types be made more specific than Widget for greater type
 // safety?
 
+final ThemeData citationsPageThemeData = ThemeData (
+  canvasColor: Colors.grey[50],
+);
+
 class CitationsPage extends StatefulWidget {
   final String title;
 
@@ -36,7 +40,7 @@ class CitationsPageState extends State<CitationsPage> {
     appBar: getSearchBar('', ["foo", "bar", "baz"], (value) => (() => value)),
       body: Column(
         children: [
-          Divider ( color: Colors.grey[50] ),
+          Divider ( color: citationsPageThemeData.canvasColor ),
           Expanded ( child: getCitationElement("Cites", citedCases)),
           Expanded ( child: getCitationElement("Cited by", citedCases)),
         ]
@@ -130,13 +134,12 @@ Widget getListView(List<String> listElements) {
       itemBuilder: (BuildContext context, int index) {
         return Container(
           height: 40,
-          color: Colors.grey[50],
+          color: citationsPageThemeData.canvasColor,
           child: getListElement(listElements[index]),
         );
       },
       separatorBuilder: (BuildContext context, int index) => Divider(
-        color: Colors.grey[50],
-      //  height: 1,
+        color: citationsPageThemeData.canvasColor,
       ),
   );
 }
