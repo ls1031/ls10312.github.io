@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'SearchPage.dart';
-
+import 'CitationPage.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        // Switch which line is commented to see some smexy lists
+        //const CitationsPage(title: 'Flutter Demo Citations Page'),
     );
   }
 }
