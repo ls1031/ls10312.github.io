@@ -32,6 +32,7 @@ class CitationsPageState extends State<CitationsPage> {
     appBar: getSearchBar('', ["foo", "bar", "baz"], (value) => (() => value)),
       body: Column(
         children: [
+          Divider ( color: Colors.grey[50] ),
           Expanded ( child: getCitationElement("Cites", citedCases)),
           Expanded ( child: getCitationElement("Cited by", citedCases)),
         ]
@@ -42,12 +43,14 @@ class CitationsPageState extends State<CitationsPage> {
 
 Widget getHeaderText(String header) {
   return Text(
-      '${header}',
-      style: const TextStyle(
-        color: Colors.black,
-        decoration: TextDecoration.none,
-      ),
-    );
+    '${header}',
+    style: const TextStyle(
+      color: Colors.black,
+      decoration: TextDecoration.none,
+      fontSize: 32,
+      height: 1.1,
+    ),
+  );
 }
 
 Widget getCitationElement(String name, List<String> listElements) {
@@ -60,29 +63,34 @@ Widget getCitationElement(String name, List<String> listElements) {
 }
 
 Widget getListElement(String name) {
-  return Align(
-    alignment: Alignment.centerLeft,
+  return Container (
     child: Text(
       '${name}',
       style: const TextStyle(
         color: Colors.black,
         decoration: TextDecoration.none,
+        fontSize: 20,
+        height: 1.1,
       ),
-    )
+    ),
+    padding: const EdgeInsets.all(8.0),
   );
 }
 
 Widget getListView(List<String> listElements) {
-  return ListView.builder(
+  return ListView.separated(
       padding: const EdgeInsets.all(8),
       itemCount: listElements.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          height: 50,
-          color: Colors.teal[index * 100],
+          height: 40,
+          color: Colors.grey[50],
           child: getListElement(listElements[index]),
         );
-      }
+      },
+      separatorBuilder: (BuildContext context, int index) => Divider(
+        color: Colors.grey[50],
+      ),
   );
 }
 
