@@ -22,15 +22,15 @@ class ReadingPage extends StatefulWidget {
 Widget getTitleSection(String caseName) {
   return Container(
     margin: EdgeInsets.all(10.0), 
-      child: Align(         
-        alignment: Alignment.center,
-        //Text of the case name
-        child: Text(
-          style: TextStyle( fontSize: 26.0, fontWeight: FontWeight.bold ), 
-          textAlign: TextAlign.center,
-          'Title Name $caseName' 
-        ),
+    child: Align(         
+      alignment: Alignment.center,
+      //Text of the case name
+      child: Text(
+        style: TextStyle( fontSize: 26.0, fontWeight: FontWeight.bold ), 
+        textAlign: TextAlign.center,
+        'Title Name $caseName' 
       ),
+    ),
   );
 }
 
