@@ -1,10 +1,10 @@
-import 'ReadingPage.dart';
 import 'CitationPage.dart';
 import 'SearchBar.dart';
-import 'dart:ui';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'queryFunc.dart';
+import 'dart:js' as js;
+import 'package:tuple/tuple.dart';
 
 class MetaReadingPage extends StatefulWidget {
   final String title;
@@ -20,9 +20,9 @@ enum PageState { reading, citations }
 class MetaReadingPageState extends State<MetaReadingPage> {
   final String title;
   String searchValue = '';
-  Map<String, dynamic> chosenCase = Map<String, dynamic>();
-
-  PageState currState = PageState.reading;
+  var searchRes = Map<String, dynamic>();
+  List<String> searchNames = [];
+  var t1 = Tuple2<List<String>, Map<String, dynamic>>([],Map<String, dynamic>());
 
   MetaReadingPageState({required this.title});
 
@@ -31,13 +31,17 @@ class MetaReadingPageState extends State<MetaReadingPage> {
     return Scaffold (
       appBar: getSearchBar(searchValue,
         (value) => setState(() => searchValue = value),
-        (value) async => await fetchSuggestions(value, "search"), 
-        (value) => currState = PageState.reading ),
-      drawer: getDrawer(),
-      body:
-      currState == PageState.reading ?
-         ReadingPage( title: title, chosenCase: chosenCase ) :
-         CitationsPage( title: title ),
+              (value) async {
+            t1 = await fetchSuggestions(value, "search");
+            searchNames = t1.item1;
+            searchRes = t1.item2;
+            return searchNames;
+          },
+        (value) {
+          js.context.callMethod('open', [searchRes["results"][int.parse(value[0] + value[1])]["frontend_pdf_url"]]);
+          print("${searchRes["results"][int.parse(value[0] + value[1])]["frontend_pdf_url"]}");
+        } ),
+      body: CitationsPage( title: title ),
     );
   }
 }

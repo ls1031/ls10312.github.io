@@ -3,6 +3,7 @@ import 'dart:async';
 // For this function to work, you need to add the http
 // dependency to pubspec.yaml
 import 'package:http/http.dart' as http;
+import 'package:tuple/tuple.dart';
 
 Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter) async {
   var url =
@@ -27,12 +28,12 @@ Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter
   }
 }
 
-Future<List<String>> fetchSuggestions(String searchValue, String endParameter) async {
+Future<Tuple2<List<String>, Map<String, dynamic>>> fetchSuggestions(String searchValue, String endParameter) async {
   final searchRes = await querySearch(searchValue, endParameter);
   List<String> _suggestions = [];
   for(int i = 0; i < searchRes["results"].length; i++) {
-    _suggestions.add(searchRes["results"][i]["name"]);
+    _suggestions.add("$i " + searchRes["results"][i]["name"]);
   }
-  return _suggestions;
+  return Tuple2<List<String>, Map<String, dynamic>>(_suggestions, searchRes);
 }
 
