@@ -16,6 +16,7 @@ class MetaReadingPage extends StatefulWidget {
 }
 
 enum PageState { reading, citations }
+
 class MetaReadingPageState extends State<MetaReadingPage> {
   final String title;
   String searchValue = '';
@@ -28,18 +29,10 @@ class MetaReadingPageState extends State<MetaReadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold (
-      appBar: getSearchBar(
-        searchValue,
+      appBar: getSearchBar(searchValue,
         (value) => setState(() => searchValue = value),
-        (value) async {
-          var searchRes = await fetchSuggestions(value, "search")
-            ?? List.filled(0, "");
-          return searchRes;
-        }, 
-        (value) {
-          currState = PageState.reading;
-        }
-      ),
+        (value) async => await fetchSuggestions(value, "search"), 
+        (value) => currState = PageState.reading ),
       drawer: getDrawer(),
       body:
       currState == PageState.reading ?
