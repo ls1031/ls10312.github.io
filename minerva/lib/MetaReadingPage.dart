@@ -23,6 +23,26 @@ class MetaReadingPageState extends State<MetaReadingPage> {
   var searchRes = Map<String, dynamic>();
   List<String> searchNames = [];
   var t1 = Tuple2<List<String>, Map<String, dynamic>>([],Map<String, dynamic>());
+  var casesSitedTo = [
+    "Jones v. Smith (1972)",
+    "Foo v. Bar (2000)",
+    "Aliens v. Predators (2004)",
+    "Ninjas v. Pirates (2069)",
+    "Brothers v. Sisters",
+    "Englishmen v. Scots",
+    "Welshmen v. Scots",
+    "Japanese v. Scots",
+    "Scots v. Other Scots"];
+  var caseCitations = [
+    "Jones v. Smith (1972)",
+    "Foo v. Bar (2000)",
+    "Aliens v. Predators (2004)",
+    "Ninjas v. Pirates (2069)",
+    "Brothers v. Sisters",
+    "Englishmen v. Scots",
+    "Welshmen v. Scots",
+    "Japanese v. Scots",
+    "Scots v. Other Scots"];
 
   MetaReadingPageState({required this.title});
 
@@ -39,9 +59,12 @@ class MetaReadingPageState extends State<MetaReadingPage> {
           },
         (value) {
           js.context.callMethod('open', [searchRes["results"][int.parse(value[0] + value[1])]["frontend_pdf_url"]]);
-          print("${searchRes["results"][int.parse(value[0] + value[1])]["frontend_pdf_url"]}");
+          setState(() {
+            casesSitedTo = searchRes["results"][int.parse(value[0] + value[1]]["cites_to"];
+            caseCitations = searchRes["results"][int.parse(value[0] + value[1]]["citations"];
+          });
         } ),
-      body: CitationsPage( title: title ),
+      body: CitationsPage( title: title, casesSitedTo: casesSitedTo, caseCitations: caseCitations ),
     );
   }
 }
