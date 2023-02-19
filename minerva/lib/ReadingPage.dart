@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:easy_search_bar/easy_search_bar.dart';
-import 'SearchBar.dart';
-import 'QueryFunc.dart';
 import 'dart:io';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;

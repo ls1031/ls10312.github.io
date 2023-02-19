@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
 import 'dart:ui';
-import 'SearchBar.dart';
 
 // TODO: make styling standard instead of having magic numbers throughout code
 // TODO: can return types be made more specific than Widget for greater type
@@ -36,8 +35,6 @@ class CitationsPageState extends State<CitationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    // TODO: make this actually do something
-    appBar: getSearchBar('', ["foo", "bar", "baz"], (value) => (() => value)),
       body: Column(
         children: [
           Divider ( color: citationsPageThemeData.canvasColor ),
