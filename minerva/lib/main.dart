@@ -38,6 +38,7 @@ class MyAppState extends State<MyApp> {
       ),
       home: MetaReadingPage(title: title,
         metaMutator: (String s) => setState(() => title = s),)
+        // home: const MetaReadingPage(title: 'Wickard v. Filburn'),
         // Switch which line is commented to see some smexy lists
         //const MetaReadingPage(title: 'Flutter Demo Citations Page'),
     );

@@ -40,6 +40,7 @@ dependencies:
   http: ^0.13.5
   search_page: ^2.3.0
   tuple: ^2.0.1
+  web_scraper:
 
 dev_dependencies:
   flutter_test:

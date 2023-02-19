@@ -240,8 +240,18 @@ Widget getListView(List<String> listElements, void Function(String) metaMutator)
         );
       },
       separatorBuilder: (BuildContext context, int index) => Divider(
+ //   padding: const EdgeInsets.all(8),
+ //   itemCount: listElements.length,
+ //   itemBuilder: (BuildContext context, int index) {
+ //     return Container(
+ //       height: 40,
         color: citationsPageThemeData.canvasColor,
-      ),
+        child: getListElement(listElements[index]),
+      );
+    },
+    separatorBuilder: (BuildContext context, int index) => Divider(
+      color: citationsPageThemeData.canvasColor,
+    ),
   );
 }
 

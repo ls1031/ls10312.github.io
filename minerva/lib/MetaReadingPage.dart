@@ -20,15 +20,29 @@ class MetaReadingPage extends StatefulWidget {
 
 enum PageState { reading, citations }
 
+Map<String, dynamic> getParsedJson(String name) {
+  var result = Map<String, dynamic>();
+  querySearch(name, "search").then((queryResult) {
+    // print(queryResult);
+    print("\n" * 10 + "FUCK" + "\n" * 10);
+    result = queryResult;
+  });
+  return result;
+}
+
 class MetaReadingPageState extends State<MetaReadingPage> {
   final String title;
   void Function(String) metaMutator;
 
   String searchValue = '';
+  // TODO: eliminate var and make final
   var searchRes = Map<String, dynamic>();
   List<String> searchNames = [];
+  // TODO: eliminate var and make final
   var t1 = Tuple2<List<String>, Map<String, dynamic>>([],Map<String, dynamic>());
+  final Map<String, dynamic> chosenCase;
 
+  // Wrap this in future builder?
   Future<List<Tuple2<String, String>>> citedCases;
   // TODO: finish this
   List<String> caseCitations = [];
