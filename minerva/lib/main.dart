@@ -2,11 +2,22 @@ import 'package:flutter/material.dart';
 import 'MetaReadingPage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp('Marbury v. Madison'));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  String title;
+
+  MyApp(this.title);
+
+  @override
+  State<MyApp> createState() => MyAppState(title);
+}
+
+class MyAppState extends State<MyApp> {
+  String title;
+
+  MyAppState(this.title);
 
   // This widget is the root of your application.
   @override
@@ -25,7 +36,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MetaReadingPage(title: 'Flutter Demo Home Page'),
+      home: MetaReadingPage(title: title,
+        metaMutator: (String s) => setState(() => title = s),)
         // Switch which line is commented to see some smexy lists
         //const MetaReadingPage(title: 'Flutter Demo Citations Page'),
     );
