@@ -6,35 +6,16 @@ import 'dart:io';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        scaffoldBackgroundColor: Color.fromARGB(255, 239, 239, 239),    
-      ),
-      home: const MyHomePage(title: 'Nav Bar'),      
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class ReadingPage extends StatefulWidget {
+  const ReadingPage({super.key, required this.title, required this.chosenCase});
 
   final String title;
+  final Map<String, dynamic> chosenCase;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ReadingPage> createState() => _ReadingPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ReadingPageState extends State<ReadingPage> {
     //Variables here will fetch data from the api calls to render the text
    var searchValue;
 
@@ -45,8 +26,6 @@ class _MyHomePageState extends State<MyHomePage> {
    //String path ='"C:\Users\luiss\Downloads\CV.pdf"';
   //This needs to be configured with past search result data to provide meaningful search suggestions
   final List<String> _suggestions = ["Case 1", "Case 2", "Case 3"];
-
-   @override
   
  
  
@@ -54,9 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
   
     return Scaffold(
-     //appBar: getSearchBar(searchValue, _suggestions,
-        //(value) => setState(() => searchValue = value)),
-      
        body:
        
        Container(

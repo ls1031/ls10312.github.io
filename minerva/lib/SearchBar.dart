@@ -6,14 +6,6 @@ import 'dart:async';
 // dependency to pubspec.yaml
 import 'queryFunc.dart';
 
-Future<List<String>> getSuggestedNames(String searchTerm) {
-  Future<List<String>> resultList;
-  querySearch(searchTerm, "search")['results'].forEach((result) {
-    resultList.get().add(result["name_abbreviation"]);
-  });
-  return resultList;
-}
-
 PreferredSizeWidget getSearchBar(String searchValue,
   Function(String) onSearch, Future<List<String>> Function(String) asyncSuggestions,
     Function(String) onSuggestionTap) {
@@ -27,5 +19,30 @@ PreferredSizeWidget getSearchBar(String searchValue,
     backgroundColor: Colors.black,
     asyncSuggestions: asyncSuggestions,
     onSuggestionTap: onSuggestionTap,
+  );
+}
+
+//Future ability to look through past chosen cases
+Widget getDrawer() {
+  return Drawer(
+      child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+                title: const Text('Item 1'),
+                onTap: () {}
+            ),
+            ListTile(
+                title: const Text('Item 2'),
+                onTap: () {}
+            )
+          ]
+      )
   );
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'SearchPage.dart';
 import 'MetaReadingPage.dart';
 
 void main() {
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MetaReadingPage(title: 'Flutter Demo Home Page'),
         // Switch which line is commented to see some smexy lists
         //const MetaReadingPage(title: 'Flutter Demo Citations Page'),
     );
