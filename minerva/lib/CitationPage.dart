@@ -12,38 +12,53 @@ final ThemeData citationsPageThemeData = ThemeData (
 
 class CitationsPage extends StatefulWidget {
   final String title;
+  final Future<List<String>> citedCases;
+  final List<String> caseCitations;
 
-  const CitationsPage({super.key, required this.title});
+  const CitationsPage({super.key, required this.title,
+    required this.citedCases, required this.caseCitations});
 
   @override
-  State<CitationsPage> createState() => CitationsPageState();
+  State<CitationsPage> createState() => CitationsPageState(
+    citedCases: citedCases,
+    caseCitations: caseCitations,
+  );
 }
 
 class CitationsPageState extends State<CitationsPage> {
 
-  final List<String> citedCases = [
-          "Jones v. Smith (1972)",
-          "Foo v. Bar (2000)",
-          "Aliens v. Predators (2004)",
-          "Ninjas v. Pirates (2069)",
-          "Brothers v. Sisters",
-          "Englishmen v. Scots",
-          "Welshmen v. Scots",
-          "Japanese v. Scots",
-          "Scots v. Other Scots"];
+  final Future<List<String>> citedCases;
+  final List<String> caseCitations;
+
+  CitationsPageState({required this.citedCases, required this.caseCitations});
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Divider ( color: citationsPageThemeData.canvasColor ),
-          Expanded ( child: getCitationElement("Cites", citedCases)),
-          Expanded ( child: getCitationElement("Cited by", citedCases)),
-        ]
-      )
+    return FutureBuilder<List<String>>(
+      future: citedCases,
+      builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
+        if (snapshot.hasData) {
+          return getGeneratedWidget(snapshot.data ?? List.filled(0, ''),
+            caseCitations);
+        }
+        else {
+          return CircularProgressIndicator();
+        }
+      }
     );
   }
+}
+
+Widget getGeneratedWidget(List<String> casesCited, List<String> caseCitations) {
+  return Scaffold(
+    body: Column(
+      children: [
+        Divider ( color: citationsPageThemeData.canvasColor ),
+        Expanded ( child: getCitationElement("Cites", casesCited)),
+        Expanded ( child: getCitationElement("Cited by", caseCitations)),
+      ]
+    )
+  );
 }
 
 Widget getHeaderText(String header) {
@@ -62,7 +77,7 @@ Widget getCitationElement(String name, List<String> listElements) {
   return Column (
     children: [
       Container ( child: getHeaderText(name)),
-      Expanded ( child: getListView(listElements)),
+      Expanded ( child: getListView(listElements) ),
     ],
   );
 }

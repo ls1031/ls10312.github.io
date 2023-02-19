@@ -1,14 +1,11 @@
 import 'queryFunc.dart';
 
-String getFormattedCaseString(String caseId) {
-  final jsonObj = querySearch("cite", "${caseId.replaceAll(' ', '%20')}");
-  return "${jsonObj['name_abbreviation']} (${jsonObj['decisision_date']})");
-}
-
-List<String> getListOfCiters(List<Map<String, dynamic>> apiJsonResponse) {
-  List<String> result;
-  apiJsonResponse.forEach((e) {
-    result.add(getFormattedCaseString(e['cite']);
-  });
+Future<List<String>> getListOfCitations(Future<Map<String, dynamic>> apiJsonResponse) async {
+  final tmp = (await apiJsonResponse)["results"];
+  List<String> result = [];
+  for (int i = 0; i < tmp.length; ++i)
+    result.add(tmp[i]["name_abbreviation"]
+      + " (${tmp[i]['decision_date'].substring(0, 4)})");
   return result;
 }
+

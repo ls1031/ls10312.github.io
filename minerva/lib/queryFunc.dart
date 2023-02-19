@@ -5,6 +5,45 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:tuple/tuple.dart';
 
+// class FutureKiller extends StatefulWidget {
+//   final String searchValue;
+//   final String endParameter;
+// 
+//   const FutureKiller({super.key, required this.searchValue,
+//     required this.endParameter});
+// 
+//   @override
+//   State<FutureKiller> createState() => FutureKillerState(
+//     searchValue: searchValue,
+//     endParameter: endParameter
+//   );
+// }
+// 
+// class FutureKillerState extends State<FutureKiller> {
+//   final String searchValue;
+//   final String endParameter;
+//   Map<String, dynamic> result = Map<String, dynamic>();
+//   final Future<Map<String, dynamic>> promise;
+// 
+//   const FutureKillerState({super.key, required this.searchValue,
+//     required this.endParameter})
+//     : promise = querySearch(searchValue, endParameter).then((queryResult) {
+//       setState(() => result = queryResult);
+//     });
+// }
+// 
+//Map<String, dynamic> forceSync(String searchValue, String endParameter) {
+//  Map<String, dynamic> result = Map<String, dynamic>();
+//  querySearch(searchValue, endParameter).then((queryResult) {
+//    print("FUCK FUCK FUCK");
+//    // print(queryResult);
+//    result = queryResult;
+//    assert(!result.isEmpty);
+//  });
+//  assert(!result.isEmpty);
+//  return result;
+//}
+
 Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter) async {
   var url =
   Uri.https('api.case.law', '/v1/cases/', {endParameter: searchValue});
