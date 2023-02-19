@@ -17,10 +17,9 @@ Future<Map<String, dynamic>> querySearch(String searchValue, String endParameter
     // },
   );
   if (response.statusCode == 200) {
-    var searchRes =
-    convert.jsonDecode(response.body) as Map<String, dynamic>;
+    return convert.jsonDecode(response.body) as Map<String, dynamic>;
     // Prints API Call results to console
-    return searchRes;
+    //return searchRes;
   } else {
     print('Request failed with status: ${response.statusCode}.');
     throw http.ClientException;

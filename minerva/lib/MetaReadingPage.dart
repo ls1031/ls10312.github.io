@@ -17,14 +17,25 @@ class MetaReadingPage extends StatefulWidget {
 
 enum PageState { reading, citations }
 
+Map<String, dynamic> getParsedJson(String name) {
+  var result = Map<String, dynamic>();
+  querySearch(name, "search").then((queryResult) {
+    // print(queryResult);
+    print("\n" * 10 + "FUCK" + "\n" * 10);
+    result = queryResult;
+  });
+  return result;
+}
+
 class MetaReadingPageState extends State<MetaReadingPage> {
   final String title;
   String searchValue = '';
-  Map<String, dynamic> chosenCase = Map<String, dynamic>();
+  final Map<String, dynamic> chosenCase;
 
   PageState currState = PageState.reading;
 
-  MetaReadingPageState({required this.title});
+  MetaReadingPageState({required this.title})
+    : chosenCase = getParsedJson(title);
 
   @override
   Widget build(BuildContext context) {
@@ -41,3 +52,4 @@ class MetaReadingPageState extends State<MetaReadingPage> {
     );
   }
 }
+

@@ -39,6 +39,7 @@ dependencies:
   easy_search_bar: ^2.4.2
   http: ^0.13.5
   search_page: ^2.3.0
+  web_scraper:
 
 dev_dependencies:
   flutter_test:

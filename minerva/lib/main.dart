@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MetaReadingPage(title: 'Flutter Demo Home Page'),
+      home: const MetaReadingPage(title: 'Wickard v. Filburn'),
         // Switch which line is commented to see some smexy lists
         //const MetaReadingPage(title: 'Flutter Demo Citations Page'),
     );
