@@ -8,3 +8,6 @@
 # Get webscraper working
 # Develop logo
 # Write unit tests
+# Figure out hosting
+# Build out lucidchart of project
+# Setup SCRUM board
