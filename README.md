@@ -5,3 +5,4 @@
 # Code clean up w/ 8 space indentation & redo architecture & abstract queries as well as redirects
 # Get webscraper working
 # Develop logo
+# Write unit tests
