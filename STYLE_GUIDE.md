@@ -25,7 +25,7 @@ This style guide is designed to do two things: (1) avoid common sources of bugs/
 
 4. Everything should be `final` unless it absolutely must be mutable.
 
-5. **Never** use the following keywords: `var`, `let`, `dynamic`. All variables must be strictly typed.~(Small exceptions for JSON interface but we will get type safety when we shift to protobufs.)~
+5. **Never** use the following keywords: `var`, `let`, `dynamic`. All variables must be strictly typed. <sub>(Small exceptions for JSON interface but we will get type safety when we shift to protobufs.)</sub>
 
 6. There is almost never a reason to have a method with a `Widget` return type.
 
