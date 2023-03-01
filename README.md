@@ -13,5 +13,3 @@
 # Figure out hosting
 # Build out lucidchart of project
 # Setup SCRUM board
-# Write style guide
-
