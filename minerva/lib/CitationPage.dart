@@ -38,6 +38,7 @@ class CitationsPageState extends State<CitationsPage> {
   
   @override
   Widget build(BuildContext context) {
+    // What the fuck is this data type? TODO: add typedef
     return FutureBuilder<List<Tuple2<String, String>>>(
       future: citedCases,
       builder: (BuildContext context, AsyncSnapshot<List<Tuple2<String, String>>> snapshot) {
@@ -239,16 +240,16 @@ Widget getListView(List<String> listElements, void Function(String) metaMutator)
           child: getListElement(listElements[index], metaMutator),
         );
       },
-      separatorBuilder: (BuildContext context, int index) => Divider(
+ //   separatorBuilder: (BuildContext context, int index) => Divider(
  //   padding: const EdgeInsets.all(8),
  //   itemCount: listElements.length,
  //   itemBuilder: (BuildContext context, int index) {
  //     return Container(
  //       height: 40,
-        color: citationsPageThemeData.canvasColor,
-        child: getListElement(listElements[index]),
-      );
-    },
+ //       color: citationsPageThemeData.canvasColor,
+ //       child: getListElement(listElements[index]),
+ //   );
+ // },
     separatorBuilder: (BuildContext context, int index) => Divider(
       color: citationsPageThemeData.canvasColor,
     ),
