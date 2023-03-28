@@ -8,6 +8,7 @@ import 'UrlFormatter.dart';
 class ReadingPage extends StatefulWidget {
 
         final String title;
+
         final Map<String, dynamic> caseJson;
 
         ReadingPage({super.key, required this.title, required this.caseJson});
@@ -59,9 +60,9 @@ class ReadingPageState extends State<ReadingPage> {
                         //Main text container down here
                         getMainTextComponent(citation),
                 ]);
-        }
-        
+        };
 }
+
 // TODO: move the text style to something else, because this is atrocious
 Container getTitleSection(String caseName) {
         return Container(
@@ -112,6 +113,7 @@ Widget getDateComponent(DateTime date) {
         );
 }
 
+// TODO: either delete or do something with this
 //Future<String> getCaseHtml(String citation) async {
         //return await getCaseHtmlImpl(citation);
 //}

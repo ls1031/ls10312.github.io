@@ -213,19 +213,18 @@ Widget getListElementWithUrl(String name, String url,
 
 Widget getListViewTuple(List<Tuple2<String, String>> listElements, void Function(String) metaMutator) {
   return ListView.separated(
-      padding: const EdgeInsets.all(8),
-      itemCount: listElements.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          height: 40,
-          color: citationsPageThemeData.canvasColor,
-          child: getListElementWithUrl(listElements[index].item1,
-            listElements[index].item2, metaMutator),
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) => Divider(
+    padding: const EdgeInsets.all(8),
+    itemCount: listElements.length,
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+        height: 40,
         color: citationsPageThemeData.canvasColor,
-      ),
+        child: getListElement(listElements[index]),
+      );
+    },
+    separatorBuilder: (BuildContext context, int index) => Divider(
+      color: citationsPageThemeData.canvasColor,
+    ),
   );
 }
 
