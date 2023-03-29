@@ -7,6 +7,7 @@ import 'package:tuple/tuple.dart';
 // TODO: make styling standard instead of having magic numbers throughout code
 // TODO: can return types be made more specific than Widget for greater type
 // safety?
+// TODO: do we actually need Tuples?
 
 final ThemeData citationsPageThemeData = ThemeData (
   canvasColor: Colors.grey[50],
@@ -219,7 +220,7 @@ Widget getListViewTuple(List<Tuple2<String, String>> listElements, void Function
       return Container(
         height: 40,
         color: citationsPageThemeData.canvasColor,
-        child: getListElement(listElements[index]),
+        child: getListElement(listElements[index].item1, metaMutator),
       );
     },
     separatorBuilder: (BuildContext context, int index) => Divider(

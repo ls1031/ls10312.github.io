@@ -40,27 +40,23 @@ class ReadingPageState extends State<ReadingPage> {
         final List<String> _suggestions = ["Case 1", "Case 2", "Case 3"];
 
         ReadingPageState({required this.caseName, required this.date,
-                required this.citationCount, required this.citation});
+                required this.citationCount, required this.citation}) {}
 
         // TODO: this method is fucking incomprehensible. Fix.
         @override
         Scaffold build(BuildContext context) {
                 return getCuteWrapper([
                         //Row that has title and the amount cited of
-                        Row(
-                            mainAxisAlignment:
-                                       MainAxisAlignment.center,
-                            children: [ getTitleSection(caseName) ]
+                        Row ( mainAxisAlignment: MainAxisAlignment.center,
+                                children: [ getTitleSection(caseName) ]
                         ),
                         //margin: EdgeInsets.all(30.0),
-                        //text of the cted num
+                        //text of the cted num (TODO: what does that mean?)
                         getCitationCountSection(citationCount),
-                        //Date Component
                         getDateComponent(date),
-                        //Main text container down here
-                        getMainTextComponent(citation),
+                        getMainTextComponent(citation)
                 ]);
-        };
+        }
 }
 
 // TODO: move the text style to something else, because this is atrocious

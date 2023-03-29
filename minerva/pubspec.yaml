@@ -39,10 +39,7 @@ dependencies:
   easy_search_bar: ^2.4.2
   http: ^0.13.5
   search_page: ^2.3.0
-<<<<<<< HEAD
   tuple: ^2.0.1
-=======
->>>>>>> 589709b23c10b099d2175c77f31787bb51139bbf
   web_scraper:
 
 dev_dependencies:
